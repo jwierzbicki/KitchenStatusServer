@@ -1,6 +1,6 @@
 ﻿using KitchenStatusServer.Models;
+using LiteDB;
 using Microsoft.Extensions.Configuration;
-using MongoDB.Driver;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,13 +8,12 @@ namespace KitchenStatusServer.Services
 {
     public class StatusUpdateService
     {
-        private readonly IMongoCollection<StatusUpdate> statusUpdates;
+        static LiteCollection<StatusUpdate> statusUpdates;
 
         public StatusUpdateService(IConfiguration config)
         {
-            var client = new MongoClient(config.GetConnectionString("KitchenHistoryDb"));
-            var database = client.GetDatabase("KitchenHistoryDb");
-            statusUpdates = database.GetCollection<StatusUpdate>("KitchenHistory");
+            var db = new LiteDatabase(@"KitchenHistory.db");
+            statusUpdates = db.GetCollection<StatusUpdate>("KitchenHistory");
         }
 
         public List<StatusUpdate> Get()
@@ -24,12 +23,12 @@ namespace KitchenStatusServer.Services
 
         public StatusUpdate Get(string id)
         {
-            return statusUpdates.Find<StatusUpdate>(stat => stat.Id == id).FirstOrDefault();
+            return statusUpdates.Find(Query.EQ("_id", id)).SingleOrDefault();
         }
 
         public StatusUpdate Create(StatusUpdate statusUpdate)
         {
-            statusUpdates.InsertOne(statusUpdate);
+            statusUpdates.Insert(statusUpdate); // id will auto increment
             return statusUpdate;
         }
     }
