@@ -17,8 +17,8 @@ namespace KitchenStatusServer.Controllers
         public StatusUpdatesController(StatusUpdateService statusUpdateService)
         {
             this.statusUpdateService = statusUpdateService;
-            string connectionString = "Data Source=D:/CSharp/KitchenStatus/KitchenStatusServer/kitchen.db;";
-            //string connectionString = "Data Source=/home/pi/KitchenStatusServer/kitchen.db;";
+            //string connectionString = "Data Source=D:/CSharp/KitchenStatus/KitchenStatusServer/kitchen.db;";
+            string connectionString = "Data Source=/home/pi/KitchenStatusServer/kitchen.db;";
             productsDbContext = ProductsDbContextFactory.Create(connectionString);
         }
 
