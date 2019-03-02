@@ -16,13 +16,13 @@ namespace KitchenStatusServer.Models
         public string Name { get; set; }
 
         [Column("state_current")]
-        public float StateCurrent { get; set; }
+        public double StateCurrent { get; set; }
 
         [Column("state_minimal")]
-        public float StateMinimal { get; set; }
+        public double StateMinimal { get; set; }
 
         [Column("unit_quantity")]
-        public float UnitQuantity { get; set; }
+        public double UnitQuantity { get; set; }
 
         [Column("unit_type")]
         public string UnitType { get; set; }

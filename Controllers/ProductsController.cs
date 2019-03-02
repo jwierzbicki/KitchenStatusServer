@@ -1,9 +1,6 @@
 ﻿using KitchenStatusServer.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace KitchenStatusServer.Controllers
 {
@@ -15,6 +12,7 @@ namespace KitchenStatusServer.Controllers
         public ProductsController()
         {
             string connectionString = "Data Source=D:/CSharp/KitchenStatus/KitchenStatusServer/kitchen.db;";
+            //string connectionString = "Data Source=/home/pi/KitchenStatusServer/kitchen.db;";
             dbContext = ProductsDbContextFactory.Create(connectionString);
         }
 
