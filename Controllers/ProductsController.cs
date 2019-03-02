@@ -11,8 +11,8 @@ namespace KitchenStatusServer.Controllers
 
         public ProductsController()
         {
-            string connectionString = "Data Source=D:/CSharp/KitchenStatus/KitchenStatusServer/kitchen.db;";
-            //string connectionString = "Data Source=/home/pi/KitchenStatusServer/kitchen.db;";
+            //string connectionString = "Data Source=D:/CSharp/KitchenStatus/KitchenStatusServer/kitchen.db;";
+            string connectionString = "Data Source=/home/pi/KitchenStatusServer/kitchen.db;";
             dbContext = ProductsDbContextFactory.Create(connectionString);
         }
 
