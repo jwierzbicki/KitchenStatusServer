@@ -10,7 +10,7 @@ namespace KitchenStatusServer.Services
     {
         static LiteCollection<StatusUpdate> statusUpdates;
 
-        public StatusUpdateService(IConfiguration config)
+        public StatusUpdateService()
         {
             var db = new LiteDatabase(@"KitchenHistory.db");
             statusUpdates = db.GetCollection<StatusUpdate>("KitchenHistory");
@@ -23,7 +23,7 @@ namespace KitchenStatusServer.Services
 
         public StatusUpdate Get(string id)
         {
-            return statusUpdates.Find(Query.EQ("_id", id)).SingleOrDefault();
+            return statusUpdates.Find(x => x.Id.ToString() == id).SingleOrDefault();
         }
 
         public StatusUpdate Create(StatusUpdate statusUpdate)

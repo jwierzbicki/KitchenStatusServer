@@ -9,11 +9,9 @@ namespace KitchenStatusServer.Controllers
     {
         private ProductsDbContext dbContext;
 
-        public ProductsController()
+        public ProductsController(ProductsDbContext productsDbContext)
         {
-            //string connectionString = "Data Source=D:/CSharp/KitchenStatus/KitchenStatusServer/kitchen.db;";
-            string connectionString = "Data Source=/home/pi/KitchenStatusServer/kitchen.db;";
-            dbContext = ProductsDbContextFactory.Create(connectionString);
+            dbContext = productsDbContext;
         }
 
         [HttpGet]
