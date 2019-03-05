@@ -6,14 +6,10 @@ using KitchenStatusServer.Models;
 using KitchenStatusServer.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-
 namespace KitchenStatusServer
 {
     public class Startup
@@ -28,7 +24,7 @@ namespace KitchenStatusServer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ProductsDbContext>(context => context.UseSqlite(Configuration.GetConnectionString("sqlite_conn_string")));
+            services.AddDbContext<ProductsDbContext>(context => context.UseSqlite(Configuration.GetConnectionString("ProductStatusDB")));
             services.AddScoped<StatusUpdateService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
